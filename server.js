@@ -17,7 +17,7 @@ app.get("/api/hello", async (req, res) => {
   try {
     const apiKey = process.env.WEATHER_API_KEY;
     let userIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-    userIp = userIp.split(',')[0].trim();
+    userIp = userIp.split(',')[0];
 
     
     const geoRes = await axios.get(`http://ip-api.com/json/${userIp}`);
