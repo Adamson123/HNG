@@ -30,7 +30,7 @@ app.get("/api/hello", async (req, res) => {
     const responseObj = {
       client_ip: userIp,
       location,
-      greeting: `Hello, ${visitor_name ? visitor_name : "Bossman"}!, the temperature is ${temperature} degrees Celsius in ${location}`,
+      greeting: `Hello, ${visitor_name ? visitor_name : "Unknown🙄"}!, the temperature is ${temperature} degrees Celsius in ${location}`,
     };
 
     res.status(200).json(responseObj);
