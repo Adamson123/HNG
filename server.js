@@ -9,7 +9,7 @@ app.set("trust proxy", true);
 
 const apiKey = process.env.WEATHER_API_KEY
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to .... <a href='/api/hello?visitor_name=Adam'>Test</a></h1> "+apiKey);
+  res.send("<h1>Welcome to .... <a href='/api/hello?visitor_name=Adam'>Test</a></h1> ");
 });
 
 app.get("/api/hello", async (req, res) => {
