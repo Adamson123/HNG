@@ -15,11 +15,11 @@ app.get("/api/hello", async (req, res) => {
 
   try {
     const apiKey = "41031635df0050e559be040d9c04356a";
-    let publicIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-    publicIp = publicIp.split(',')[0].trim();
+    let userIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+    userIp = publicIp.split(',')[0].trim();
 
     
-    const geoRes = await axios.get(`http://ip-api.com/json/${publicIp}`);
+    const geoRes = await axios.get(`http://ip-api.com/json/${userIp}`);
     const { city: location, lat, lon } = geoRes.data;
 
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
@@ -27,7 +27,7 @@ app.get("/api/hello", async (req, res) => {
     const temperature = weatherResponse.data.main.temp;
 
     const responseObj = {
-      client_ip: publicIp,
+      client_ip: userIp,
       location,
       greeting: `Hello, ${visitor_name}!, the temperature is ${temperature} degrees Celsius in ${location}`,
     };
