@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express");
 const axios = require("axios");
 const app = express();
@@ -14,7 +15,7 @@ app.get("/api/hello", async (req, res) => {
   const { visitor_name } = req.query;
 
   try {
-    const apiKey = "41031635df0050e559be040d9c04356a";
+    const apiKey = process.env.WEATHER_API_KEY;
     let userIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
     userIp = userIp.split(',')[0].trim();
 
