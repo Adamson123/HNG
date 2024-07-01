@@ -22,7 +22,7 @@ app.get("/api/hello", async (req, res) => {
     let publicIp = req.headers["x-forwarded-for"] || req
 .connection.remoteAddress;
    console.log(publicIp)
-    const geoipLoc = geoip.lookup(publicIp);
+    const geoipLoc = geoip.lookup(publicIp.clientIp.split(',')[0].trim(););
 
     const location = geoipLoc.city;
 
