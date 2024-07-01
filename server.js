@@ -9,7 +9,7 @@ app.set("trust proxy", true);
 
 app.get("/", (req, res) => {
   res.send(
-    "Welcome to .... <a href='http://localhost:5002/api/hello?visitor_name=Adam'>Test</a>"
+    "Welcome to .... <a href='/api/hello?visitor_name=Adam'>Test</a>"
   );
 });
 
