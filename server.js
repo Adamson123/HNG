@@ -21,7 +21,7 @@ app.get("/api/hello", async (req, res) => {
     const getPulicIp = await axios.get("https://api.ipify.org?format=json");
     let publicIp = req.headers["x-forwarded-for"] || req
 .connection.remoteAddress;
-
+   console.log(publicIp)
     const geoipLoc = geoip.lookup(publicIp);
 
     const location = geoipLoc.city;
