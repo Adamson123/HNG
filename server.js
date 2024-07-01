@@ -16,7 +16,7 @@ app.get("/api/hello", async (req, res) => {
   try {
     const apiKey = "41031635df0050e559be040d9c04356a";
     let userIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-    userIp = publicIp.split(',')[0].trim();
+    userIp = userIp.split(',')[0].trim();
 
     
     const geoRes = await axios.get(`http://ip-api.com/json/${userIp}`);
@@ -29,7 +29,7 @@ app.get("/api/hello", async (req, res) => {
     const responseObj = {
       client_ip: userIp,
       location,
-      greeting: `Hello, ${visitor_name}!, the temperature is ${temperature} degrees Celsius in ${location}`,
+      greeting: `Hello, ${visitor_name ? visitor_name : "Bossman"}!, the temperature is ${temperature} degrees Celsius in ${location}`,
     };
 
     res.status(200).json(responseObj);
