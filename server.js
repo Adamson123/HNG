@@ -12,7 +12,8 @@ app.get("/", (req, res) => {
   res.send(" <h1>Welcome to ....<a href='/api/hello?visitor_name=Adam'>Test</a></h1>");
 });
 
-const apiKey = process.env.WEATHER_API_KEY
+
+const apiKey = "41031635df0050e559be040d9c04356a"
 
 app.get("/api/hello", async (req, res) => {
   const { visitor_name } = req.query;
