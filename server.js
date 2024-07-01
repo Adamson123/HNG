@@ -33,9 +33,7 @@ app.get("/api/hello", async (req, res) => {
     const resObj = {
       client_ip: publicIp,
       location,
-      greeting: `Hello, ${visitor_name}!, the temperature 
-      is ${getTemperature.data.main.temp} degrees 
-      Celsius in ${location}`,
+      greeting: `Hello, ${visitor_name}!, the temperature is ${getTemperature.data.main.temp} degrees Celsius in ${location}`,
     };
 
     res.status(200).json(resObj);
