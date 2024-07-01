@@ -13,16 +13,17 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/hello", async (req, res) => {
-  const { visitor_name } = req.query;
+ 
 
   try {
-    
+    const { visitor_name } = req.query;
     let userIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
     userIp = userIp.split(',')[0].trim();
 
     
     const geoRes = await axios.get(`http://ip-api.com/json/${userIp}`);
-    const { location, lat, lon } = geoRes.data.city;
+    console.log(geoRes);
+    const {city: location, lat, lon } = geoRes.data;
 
     const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
     const weatherResponse = await axios.get(weatherUrl);
