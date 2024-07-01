@@ -7,15 +7,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.set("trust proxy", true);
 
+const apiKey = process.env.WEATHER_API_KEY
 app.get("/", (req, res) => {
-  res.send("<h1>Welcome to .... <a href='/api/hello?visitor_name=Adam'>Test</a></h1>");
+  res.send("<h1>Welcome to .... <a href='/api/hello?visitor_name=Adam'>Test</a></h1> "+apiKey);
 });
 
 app.get("/api/hello", async (req, res) => {
   const { visitor_name } = req.query;
 
   try {
-    const apiKey = process.env.WEATHER_API_KEY;
+    
     let userIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
     userIp = userIp.split(',')[0].trim();
 
